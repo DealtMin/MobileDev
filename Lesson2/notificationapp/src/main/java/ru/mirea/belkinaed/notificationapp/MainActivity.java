@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentText("AAAAAAAAAAA!")
+                .setContentText("Congratulation!")
                 .setSmallIcon(com.google.android.material.R.drawable.m3_split_button_chevron_avd)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText("Much longer text that cannot fit one line... Much longer text that cannot fit one line..."))
                 .setContentTitle("MREA");
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Student meow Notification", importance);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Student BED Notification", importance);
         channel.setDescription("MIREA Channel");
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.createNotificationChannel(channel);
