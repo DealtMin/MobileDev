@@ -1,4 +1,4 @@
-package ru.mirea.belkinaed.sharer;
+package ru.mirea.belkinaed.favoritebook;
 
 import android.os.Bundle;
 
