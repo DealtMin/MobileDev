@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String dateString = sdf.format(new Date(dateInMillis));
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
         intent.putExtra("date", dateString);
+        intent.putExtra("number", 2);
         startActivity(intent);
     }
 }

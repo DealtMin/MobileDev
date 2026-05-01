@@ -27,9 +27,11 @@ public class SecondActivity extends AppCompatActivity {
         text = findViewById(R.id.textView2);
         Intent intent = getIntent();
         String string = intent.getStringExtra("date");
-        String fullstring = "КВАДРАТ ЗНАЧЕНИЯ МОЕГО НОМЕРА " +
-                "ПО СПИСКУ В ГРУППЕ СОСТАВЛЯЕТ 4, а текущее время " +
-                string;
+        Integer number = intent.getIntExtra("number", 0);
+        String fullstring = String.format("КВАДРАТ ЗНАЧЕНИЯ МОЕГО НОМЕРА " +
+                "ПО СПИСКУ В ГРУППЕ СОСТАВЛЯЕТ %s, а текущее время " +
+                string, number*number);
+
         text.setText(fullstring);
     }
 }
