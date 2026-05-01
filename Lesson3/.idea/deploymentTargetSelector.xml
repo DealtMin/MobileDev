@@ -7,6 +7,7 @@
       </SelectionState>
       <SelectionState runConfigName="intentapp">
         <option name="selectionMode" value="DROPDOWN" />
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="sharer">
         <option name="selectionMode" value="DROPDOWN" />
