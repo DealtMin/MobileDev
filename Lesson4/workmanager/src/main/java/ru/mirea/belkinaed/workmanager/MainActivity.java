@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Constraints constraints	=	new	Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.UNMETERED)
-                .setRequiresCharging(true)
+                .setRequiresCharging(false)
                 .build();
         WorkRequest uploadWorkRequest	=
                 new	OneTimeWorkRequest.Builder(UploadWorker.class)

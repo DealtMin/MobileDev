@@ -30,7 +30,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
     public final String TAG = this.getClass().getSimpleName();
-    private final int LoaderID = 1234;
+    private final int LoaderID = 2;
     private EditText editTextPhrase;
 
     @Override
