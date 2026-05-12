@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.mirea.belkinaed.lesson6"
+    namespace = "ru.mirea.belkinaed.securesharedpreferences"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "ru.mirea.belkinaed.lesson6"
+        applicationId = "ru.mirea.belkinaed.securesharedpreferences"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
@@ -37,9 +37,11 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
 }
 
 dependencies {
+    implementation("androidx.security:security-crypto:1.0.0")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
