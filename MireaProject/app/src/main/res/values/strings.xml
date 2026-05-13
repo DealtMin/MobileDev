@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MireaProject</string>
+    <string name="menu_home">Главная</string>
+    <string name="menu_data">Отрасль</string>
+    <string name="menu_webview">WebView</string>
+    <string name="navigation_drawer_open">Открыть навигационное меню</string>
+    <string name="navigation_drawer_close">Закрыть навигационное меню</string>
+    <string name="menu_sensor">Компас (Датчик)</string>
+    <string name="menu_camera">Аватар (Камера)</string>
+    <string name="menu_audio">Аудиозаметка</string>
+</resources>
