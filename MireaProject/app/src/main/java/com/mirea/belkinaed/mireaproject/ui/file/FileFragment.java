@@ -2,6 +2,7 @@ package com.mirea.belkinaed.mireaproject.ui.file;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Environment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,12 +61,14 @@ public class FileFragment extends Fragment {
 
     private void loadFiles() {
         fileList.clear();
-        File dir = requireContext().getFilesDir();
-        File[] files = dir.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    fileList.add(file);
+        File dir = requireContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        if (dir != null) {
+            File[] files = dir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        fileList.add(file);
+                    }
                 }
             }
         }
@@ -92,7 +95,9 @@ public class FileFragment extends Fragment {
     }
 
     private void createFile(String fileName, String content) {
-        try (FileOutputStream fos = requireContext().openFileOutput(fileName, android.content.Context.MODE_PRIVATE)) {
+        File dir = requireContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        File file = new File(dir, fileName);
+        try (FileOutputStream fos = new FileOutputStream(file)) {
             fos.write(content.getBytes(StandardCharsets.UTF_8));
             loadFiles();
             adapter.notifyDataSetChanged();
@@ -121,7 +126,8 @@ public class FileFragment extends Fragment {
                 return;
             }
 
-            File newFile = new File(requireContext().getFilesDir(), newFileName);
+            File dir = requireContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+            File newFile = new File(dir, newFileName);
             try (FileOutputStream fos = new FileOutputStream(newFile)) {
                 fos.write(newContent.getBytes(StandardCharsets.UTF_8));
             }
