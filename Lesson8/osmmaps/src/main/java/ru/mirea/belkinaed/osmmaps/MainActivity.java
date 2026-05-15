@@ -32,11 +32,9 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import ru.mirea.belkinaed.osmmaps.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE_PERMISSION = 200;
     private MapView mapView = null;
     private ActivityMainBinding binding;
-    private boolean hasPermission = false;
-    private MyLocationNewOverlay locationNewOverlay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,21 +49,23 @@ public class MainActivity extends AppCompatActivity {
         mapController.setZoom(15.0);
         GeoPoint startPoint = new GeoPoint(55.794229, 37.700772);
         mapController.setCenter(startPoint);
-        GetPermission();
-        locationNewOverlay = new MyLocationNewOverlay(new
+        MyLocationNewOverlay locationNewOverlay = new MyLocationNewOverlay(new
                 GpsMyLocationProvider(getApplicationContext()),mapView);
         locationNewOverlay.enableMyLocation();
-        mapView.getOverlays().add(this.locationNewOverlay);
+        mapView.getOverlays().add(locationNewOverlay);
+
         CompassOverlay compassOverlay = new CompassOverlay(getApplicationContext(), new
                 InternalCompassOrientationProvider(getApplicationContext()), mapView);
         compassOverlay.enableCompass();
         mapView.getOverlays().add(compassOverlay);
+
         final Context context = this.getApplicationContext();
         final DisplayMetrics dm = context.getResources().getDisplayMetrics();
         ScaleBarOverlay scaleBarOverlay = new ScaleBarOverlay(mapView);
         scaleBarOverlay.setCentred(true);
         scaleBarOverlay.setScaleBarOffset(dm.widthPixels / 2, 10);
         mapView.getOverlays().add(scaleBarOverlay);
+
         Marker marker = new Marker(mapView);
         marker.setPosition(new GeoPoint(55.794229, 37.700772));
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
@@ -76,9 +76,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mapView.getOverlays().add(marker);
-        marker.setIcon(ResourcesCompat.getDrawable(getResources(), org.osmdroid.library.R.drawable.osm_ic_follow_me_on, null));
-        marker.setTitle("Title");
+        marker.setIcon(ResourcesCompat.getDrawable(getResources(), org.osmdroid.library.
+                R.drawable.osm_ic_follow_me_on, null));
+        marker.setTitle("11");
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             mapView.onResume();
         }
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -98,48 +101,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void GetPermission()
-    {
-        int internetPermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
-        int networkStatePermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE);
-        int coarsePermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int finePermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-        int backgroundPermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION);
-        int writeStoragePermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-        if (internetPermissionStatus == PackageManager.PERMISSION_GRANTED &&
-                networkStatePermissionStatus == PackageManager.PERMISSION_GRANTED &&
-                coarsePermissionStatus == PackageManager.PERMISSION_GRANTED &&
-                finePermissionStatus == PackageManager.PERMISSION_GRANTED &&
-                backgroundPermissionStatus == PackageManager.PERMISSION_GRANTED &&
-                writeStoragePermissionStatus == PackageManager.PERMISSION_GRANTED)
-        {
-            hasPermission = true;
-        }
-        else {
-            // Запрашиваем все необходимые разрешения
-            ActivityCompat.requestPermissions(this,
-                    new String[]{
-                            Manifest.permission.INTERNET,
-                            Manifest.permission.ACCESS_NETWORK_STATE,
-                            Manifest.permission.ACCESS_COARSE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    },
-                    REQUEST_CODE_PERMISSION);
-        }
-    }
-    @Override
-    public	void	onRequestPermissionsResult(int	requestCode, @NonNull String[]	permissions,
-                                                 @NonNull int[]	grantResults)
-    {
-        //	производится проверка полученного результата от пользователя на запрос разрешения Camera
-        super.onRequestPermissionsResult(requestCode,	permissions,	grantResults);
-        if	(requestCode	==	REQUEST_CODE_PERMISSION)	{
-            //	permission	granted
-            hasPermission	=	grantResults.length	>	0
-                    &&	grantResults[0]	==	PackageManager.PERMISSION_GRANTED;
-        }
-    }
 }
