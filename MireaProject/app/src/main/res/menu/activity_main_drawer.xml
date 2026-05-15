@@ -46,5 +46,10 @@
             android:icon="@android:drawable/ic_menu_edit"
             android:title="@string/menu_file" />
 
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="Карта" />
+
     </group>
 </menu>

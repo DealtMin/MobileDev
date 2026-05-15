@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
+    implementation("androidx.preference:preference:1.2.0")
     implementation("androidx.work:work-runtime:2.8.1")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

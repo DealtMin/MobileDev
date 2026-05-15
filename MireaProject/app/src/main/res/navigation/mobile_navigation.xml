@@ -56,5 +56,10 @@
         android:name="com.mirea.belkinaed.mireaproject.ui.file.FileFragment"
         android:label="@string/menu_file"
         tools:layout="@layout/fragment_file" />
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.mirea.belkinaed.mireaproject.ui.map.MapFragment"
+        android:label="Карта"
+        tools:layout="@layout/fragment_map" />
 
 </navigation>
