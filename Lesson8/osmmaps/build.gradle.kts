@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.mirea.belkinaed.yandexmaps"
+    namespace = "ru.mirea.belkinaed.osmmaps"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "ru.mirea.belkinaed.yandexmaps"
+        applicationId = "ru.mirea.belkinaed.osmmaps"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
@@ -40,7 +40,9 @@ android {
 }
 
 dependencies {
-    implementation("com.yandex.android:maps.mobile:4.4.0-full")
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
+// библиотека для хранения данных SharedPreferences
+    implementation("androidx.preference:preference:1.2.0")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)

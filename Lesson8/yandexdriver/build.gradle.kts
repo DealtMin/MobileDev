@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.mirea.belkinaed.yandexmaps"
+    namespace = "ru.mirea.belkinaed.yandexdriver"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "ru.mirea.belkinaed.yandexmaps"
+        applicationId = "ru.mirea.belkinaed.yandexdriver"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

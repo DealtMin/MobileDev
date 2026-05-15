@@ -1,4 +1,4 @@
-package ru.mirea.belkinaed.yandexmaps;
+package ru.mirea.belkinaed.yandexdriver;
 
 import android.app.Application;
 

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements UserLocationObjec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MapKitFactory.initialize(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
