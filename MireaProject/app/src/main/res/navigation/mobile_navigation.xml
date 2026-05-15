@@ -61,5 +61,10 @@
         android:name="com.mirea.belkinaed.mireaproject.ui.map.MapFragment"
         android:label="Карта"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/nav_internetInfo"
+        android:name="com.mirea.belkinaed.mireaproject.ui.internetinfo.InternetInfoFragment"
+        android:label="Интернет ресурсы"
+        tools:layout="@layout/fragment_internet_info" />
 
 </navigation>
