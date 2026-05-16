@@ -38,7 +38,7 @@ public class InternetInfoFragment extends Fragment {
         binding = FragmentInternetInfoBinding.inflate(inflater, container, false);
         binding.button.setOnClickListener(v -> {
             if (isNetworkAvailable()) {
-                new DownloadImageTask(binding).execute("https://cataas.com/cat");
+                new DownloadImageTask().execute("https://cataas.com/cat");
             } else {
                 Toast.makeText(requireContext(), "Нет интернета", Toast.LENGTH_SHORT).show();
             }
@@ -62,20 +62,12 @@ public class InternetInfoFragment extends Fragment {
         return capabilities != null && (capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET));
     }
 
-    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        private final WeakReference<FragmentInternetInfoBinding> bindingRef;
-
-        DownloadImageTask(FragmentInternetInfoBinding binding) {
-            this.bindingRef = new WeakReference<>(binding);
-        }
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            FragmentInternetInfoBinding binding = bindingRef.get();
-            if (binding != null) {
                 binding.textView.setText("Загружаем котика...");
-            }
         }
 
         @Override
@@ -91,14 +83,13 @@ public class InternetInfoFragment extends Fragment {
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
-            FragmentInternetInfoBinding binding = bindingRef.get();
             if (binding == null) return;
 
             if (result != null) {
                 binding.imageView.setImageBitmap(result);
                 binding.textView.setText("Котик загружен!");
             } else {
-                binding.textView.setText("Ошибка при загрузке котика");
+                binding.textView.setText("Ошибка при загрузке");
             }
         }
 
