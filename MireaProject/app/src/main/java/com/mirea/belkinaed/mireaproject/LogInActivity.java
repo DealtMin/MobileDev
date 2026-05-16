@@ -1,5 +1,6 @@
 package com.mirea.belkinaed.mireaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,6 +57,7 @@ public class LogInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(LogInActivity.this, MainActivity.class));
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure",
                                     task.getException());
@@ -75,13 +77,15 @@ public class LogInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(LogInActivity.this, MainActivity.class));
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                         if (!task.isSuccessful()) {
-                            binding.statusTextView.setText(R.string.auth_failed);
+                            Toast.makeText(LogInActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
